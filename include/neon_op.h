@@ -1,6 +1,6 @@
+#pragma once
 #include "common.h"
 #include <cassert>
-#pragma once
 
 /// @brief 
 /// @param arr 
@@ -45,8 +45,8 @@ inline void add_float_c(std::vector<vec3> dst, std::vector<vec3> src1, std::vect
 /// @brief 
 void example_SIMD()
 {
-    float a[4] = {rand_vec().x(), rand_vec().y(), rand_vec().z(), 1.0f};
-    float b[4] = {rand_vec().x(), rand_vec().y(), rand_vec().z(), 1.0f};
+    float a[4] = {rand_vecf().x(), rand_vecf().y(), rand_vecf().z(), 1.0f};
+    float b[4] = {rand_vecf().x(), rand_vecf().y(), rand_vecf().z(), 1.0f};
     float result[4];
 
     float32x4_t vec_a = vld1q_f32(a);

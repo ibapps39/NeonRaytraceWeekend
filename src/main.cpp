@@ -1,5 +1,17 @@
+#include <iostream>
+#include <iomanip>
 #include "common.h"
-
+#include "bvh.h"
+#include "camera.h"
+#include "constant_medium.h"
+#include "hittable.h"
+#include "hittable_list.h"
+#include "material.h"
+#include "quad.h"
+#include "sphere.h"
+#include "texture.h"
+#include "integrate.h"
+#include "estimate.h"
 int main()
 {
     srand(time(NULL));
