@@ -96,7 +96,6 @@ void async_populate(std::vector<vec3> &v, int start, int end)
 void push_threads(std::vector<std::thread> &threads_v, int start, int end, std::vector<vec3> &v)
 {
     threads_v.push_back(std::thread(&async_populate, std::ref(v), start, end));
-    threads_v.push_back(std::thread())
 }
 /// @brief 
 /// @param N 
