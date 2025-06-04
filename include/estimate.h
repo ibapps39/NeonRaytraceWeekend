@@ -1,5 +1,5 @@
+#pragma once
 #include "rt_common.h"
-
 #include <algorithm>
 #include <vector>
 #include <iostream>

@@ -8,7 +8,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <chrono>
-#include <arm_neon.h>
+#include <iomanip>
+
+#include "arm_neon.h"
+
 #include "bvh.h"
 #include "camera.h"
 #include "constant_medium.h"
@@ -18,12 +21,10 @@
 #include "quad.h"
 #include "sphere.h"
 #include "texture.h"
-#include <iostream>
-#include <iomanip>
 #include "integrate.h"
 #include "estimate.h"
-
 #include "vec3.h"
+
 #include "neon_op.h"
 
 
@@ -53,26 +54,26 @@ auto timeFunction(Func&& f, Args&&... args) {
 void read_arr(const std::vector<vec3> &A, const std::vector<vec3> &B, const std::vector<vec3> &C)
 {
 
-    std::cout << "First 10 elements: A" << std::endl;
+    std::clog << "First 10 elements: A" << std::endl;
     for (size_t i = 0; i < 11; i++)
     {
-        std::cout << "A" << i << "[" << A[i].x() << ", " << A[i].y() << ", " << A[i].z() << "]\n";
+        std::clog << "A" << i << "[" << A[i].x() << ", " << A[i].y() << ", " << A[i].z() << "]\n";
     }
-    std::cout << std::endl;
-    std::cout << "First 10 elements: B" << std::endl;
+    std::clog << std::endl;
+    std::clog << "First 10 elements: B" << std::endl;
     for (size_t i = 0; i < 11; i++)
     {
-        std::cout << "B" << i << "[" << B[i].x() << ", " << B[i].y() << ", " << B[i].z() << "]\n";
+        std::clog << "B" << i << "[" << B[i].x() << ", " << B[i].y() << ", " << B[i].z() << "]\n";
     }
-    std::cout << std::endl;
+    std::clog << std::endl;
     if (C[0].x() == 0 && C[0].x() == 0 && C[0].x() == 0) {return;}
 
-        std::cout << "First 10 elements: B" << std::endl;
+        std::clog << "First 10 elements: B" << std::endl;
         for (size_t i = 0; i < 11; i++)
         {
-            std::cout << "C" << i << "[" << C[i].x() << ", " << C[i].y() << ", " << C[i].z() << "]\n";
+            std::clog << "C" << i << "[" << C[i].x() << ", " << C[i].y() << ", " << C[i].z() << "]\n";
         }
-    std::cout << std::endl;
+    std::clog << std::endl;
 }
 
 /// @brief async, give an array random floats
@@ -95,6 +96,7 @@ void async_populate(std::vector<vec3> &v, int start, int end)
 void push_threads(std::vector<std::thread> &threads_v, int start, int end, std::vector<vec3> &v)
 {
     threads_v.push_back(std::thread(&async_populate, std::ref(v), start, end));
+    threads_v.push_back(std::thread())
 }
 /// @brief 
 /// @param N 
